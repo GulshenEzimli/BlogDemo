@@ -17,5 +17,8 @@ namespace Entity.Concrete
         public DateTime CreatedDate { get; set; }
 		public DateTime UpdatedDate { get; set; }
 		public bool IsDeleted { get; set; }
-	}
+		public int CategoryId { get; set; }
+        public Category Category { get; set; }
+        public List<Comment> Comments { get; set; }
+    }
 }

@@ -15,5 +15,7 @@ namespace Entity.Concrete
 		public string Content { get; set; }
 		public DateTime CreatedDate { get; set; }
 		public bool IsDeleted { get; set; }
-	}
+        public int ArticleId { get; set; }
+        public Article Article { get; set; }
+    }
 }
