@@ -1,14 +1,11 @@
-﻿using DataAccess.Abstract;
+﻿using Business.Abstract;
+using Core.Business.Concrete;
+using DataAccess.Abstract;
 using Entity.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-	public class CommentManager : EntityManager<Comment>
+	public class CommentManager : EntityManager<Comment>, ICommentService
 	{
         public CommentManager(ICommentRepository commentRepository) : base(commentRepository)
         {

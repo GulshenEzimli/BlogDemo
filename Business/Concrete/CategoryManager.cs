@@ -1,14 +1,12 @@
-﻿using DataAccess.Abstract;
+﻿using Business.Abstract;
+using Core.Business.Concrete;
+using DataAccess.Abstract;
 using Entity.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Business.Concrete
 {
-	public class CategoryManager : EntityManager<Category>
+	public class CategoryManager : EntityManager<Category>, ICategoryService
 	{
         public CategoryManager(ICategoryRepository categoryRepository) : base(categoryRepository)
         {
