@@ -10,7 +10,14 @@ namespace DataAccess.DbContexts
 {
 	public class BlogDbContext : DbContext
 	{
-        public DbSet<About> Abouts { get; set; }
+		private readonly string _connectionString;
+
+		public BlogDbContext(string connectionString)
+		{
+			_connectionString = connectionString;
+		}
+
+		public DbSet<About> Abouts { get; set; }
         public DbSet<Article> Articles { get; set; }
 		public DbSet<Category> Categories { get; set; }
 		public DbSet<Comment> Comments { get; set; }
@@ -19,7 +26,7 @@ namespace DataAccess.DbContexts
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			optionsBuilder.UseSqlServer("Server=GULSHAN;Database=BlogDb;Integrated Security=true;TrustServerCertificate=true");
+			optionsBuilder.UseSqlServer(_connectionString);
 		}
 
 	}
