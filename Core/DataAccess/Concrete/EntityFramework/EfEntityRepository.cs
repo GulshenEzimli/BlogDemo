@@ -39,7 +39,7 @@ namespace Core.DataAccess.Concrete.EntityFramework
 
 		public TEntity GetById(Expression<Func<TEntity, bool>> filter)
 		{
-			return _dbContext.Set<TEntity>().LastOrDefault(filter);
+			return _dbContext.Set<TEntity>().OrderBy(entity => entity).LastOrDefault(filter);
 		}
 
 		public void Update(TEntity entity)
