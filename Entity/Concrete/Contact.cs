@@ -10,11 +10,12 @@ namespace Entity.Concrete
 	public class Contact : IEntity
 	{
         public int Id { get; set; }
-        public string UserName { get; set; }
+        public int UserId { get; set; }
         public string Email { get; set; }
         public string Subject { get; set; }
         public string Message { get; set; }
         public DateTime CreatedDate { get; set; }
         public bool IsDeleted { get; set; }
-    }
+		public User User { get; set; }
+	}
 }

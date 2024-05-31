@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataAccess.Migrations
 {
-    [DbContext(typeof(BlogDbContext))]
+	[DbContext(typeof(BlogDbContext))]
     [Migration("20240524174448_CreateDb")]
     partial class CreateDb
     {
