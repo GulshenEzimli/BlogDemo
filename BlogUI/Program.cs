@@ -1,3 +1,4 @@
+using BlogUI.Extensions;
 using BlogUI.Mappers.Implementations;
 using BlogUI.Mappers.Interfaces;
 using BlogUI.Services.Implementations;
@@ -6,6 +7,8 @@ using Business.Abstract;
 using Business.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
+using DataAccess.DbContexts;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlogUI
 {
@@ -16,11 +19,12 @@ namespace BlogUI
 			var builder = WebApplication.CreateBuilder(args);
 
 			builder.Services.AddControllersWithViews();
-			builder.Services.AddTransient<ICategoryModelService, CategoryModelService>();
-			builder.Services.AddTransient<ICategoryMapper, CategoryMapper>();
-			builder.Services.AddTransient<ICategoryService, CategoryManager>();
-			builder.Services.AddTransient<ICategoryRepository,CategoryRepository>();
 
+			builder.Services.AddEfDb(builder.Configuration);
+			builder.Services.AddBusinessServices();
+			builder.Services.AddMappers();
+			builder.Services.AddModelServices();
+			
 			var app = builder.Build();
 
 			if (!app.Environment.IsDevelopment())
