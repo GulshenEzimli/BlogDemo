@@ -19,5 +19,10 @@ namespace DataAccess.Concrete
 		{
 			_dbContext = dbContext;
 		}
+
+		public List<Article> GetArticlesWithCategory()
+		{
+			return _dbContext.Set<Article>().Include(x => x.Category).ToList();
+		}
 	}
 }

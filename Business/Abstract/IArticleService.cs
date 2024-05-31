@@ -5,5 +5,6 @@ namespace Business.Abstract
 {
 	public interface IArticleService : IEntityService<Article>
 	{
+		List<Article> GetListWithCategpories();
 	}
 }
