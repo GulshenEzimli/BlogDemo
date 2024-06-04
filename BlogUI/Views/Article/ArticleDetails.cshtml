@@ -41,7 +41,9 @@
                 </div>
 
 
-                @await Component.InvokeAsync("CommentsToArticle", new { id = Model.Id})
+                @await Component.InvokeAsync("CommentsToArticle", new { id = Model.Id })
+
+                @await Html.PartialAsync("~/Views/Shared/AddComment.cshtml")
 
             </div>
             
