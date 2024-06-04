@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,6 +19,12 @@ namespace DataAccess.Concrete
 		public CommentRepository(DbContext dbContext) :	base(dbContext)
 		{
 			_dbContext = dbContext;
+		}
+
+		public List<Comment> ArticleCommentsWithUser(Expression<Func<Comment, bool>> filter)
+		{
+			return _dbContext.Set<Comment>().Include(comment => comment.User).Where(filter).ToList();
+
 		}
 	}
 }
