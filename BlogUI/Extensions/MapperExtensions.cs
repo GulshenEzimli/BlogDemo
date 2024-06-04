@@ -9,7 +9,7 @@ namespace BlogUI.Extensions
 		{
 			services.AddTransient<IArticleMapper, ArticleMapper>();
 			services.AddTransient<ICategoryMapper, CategoryMapper>();
-
+			services.AddTransient<IArticleCommentMapper, ArticleCommentMapper>();
 		}
 	}
 }

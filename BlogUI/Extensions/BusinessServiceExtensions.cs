@@ -9,6 +9,7 @@ namespace BlogUI.Extensions
 		{
 			services.AddTransient<IArticleService, ArticleManager>();
 			services.AddTransient<ICategoryService, CategoryManager>();
+			services.AddTransient<ICommentService, CommentManager>();
 		}
 	}
 }
