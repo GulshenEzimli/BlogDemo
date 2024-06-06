@@ -18,5 +18,6 @@ namespace Entity.Concrete
         public string Password { get; set; }
         public DateTime CreatedDate { get; set; }
         public bool IsDeleted { get; set; }
+        public List<Article> Articles { get; set; }
     }
 }
