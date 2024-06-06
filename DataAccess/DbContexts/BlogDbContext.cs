@@ -24,11 +24,12 @@ namespace DataAccess.DbContexts
 		public DbSet<Contact> Contacts { get; set; }
 		public DbSet<Writer> Writers { get; set; }
 		public DbSet<User> Users { get; set; }
+        public DbSet<NewsLetter> NewsLetters { get; set; }
 
-		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			optionsBuilder.UseSqlServer(_connectionString);
-		}
+        }
 
 	}
 }
