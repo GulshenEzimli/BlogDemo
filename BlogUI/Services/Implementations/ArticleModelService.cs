@@ -55,7 +55,7 @@ namespace BlogUI.Services.Implementations
 
 		public List<ArticleModel> GetAllArticles()
 		{
-			var articles = _service.GetListWithCategpories();
+			var articles = _service.GetListWithCategories();
 			List<ArticleModel> models = new List<ArticleModel>();
 			foreach (var article in articles)
 			{

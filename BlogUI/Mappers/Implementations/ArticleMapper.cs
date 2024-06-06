@@ -23,6 +23,11 @@ namespace BlogUI.Mappers.Implementations
 				Id = model.CategoryId,
 				Name = model.CategoryName
 			};
+			article.WriterId = model.WriterId;
+			article.Writer = new Writer
+			{
+				Id = model.WriterId
+			};
 
 			return article;
 		}
@@ -41,6 +46,7 @@ namespace BlogUI.Mappers.Implementations
 			model.IsDeleted = entity.IsDeleted;
 			model.CategoryId = entity.CategoryId;
 			model.CategoryName = entity.Category.Name;
+			model.WriterId = entity.WriterId;
 			return model;
 		}
 	}

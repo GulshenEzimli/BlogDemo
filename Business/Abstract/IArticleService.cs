@@ -5,6 +5,7 @@ namespace Business.Abstract
 {
 	public interface IArticleService : IEntityService<Article>
 	{
-		List<Article> GetListWithCategpories();
+		List<Article> GetListWithCategories();
+		List<Article> GetArticlesWithWriterId(int id);
 	}
 }

@@ -14,9 +14,14 @@ namespace Business.Concrete
 			_articleRepository = articleRepository;
         }
 
-		public List<Article> GetListWithCategpories()
+		public List<Article> GetListWithCategories()
 		{
 			return _articleRepository.GetArticlesWithCategory();
+		}
+
+		public List<Article> GetArticlesWithWriterId(int id)
+		{
+			return this.GetListWithCategories().Where(a => a.WriterId == id).ToList();
 		}
 	}
 }

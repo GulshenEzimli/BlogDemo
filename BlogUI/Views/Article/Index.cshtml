@@ -7,15 +7,13 @@
             @foreach (var article in Model)
             {
                 <div class="col-lg-4 card">
-                    <a href="single.html">
+                    <a asp-controller="Article" asp-action="ArticleDetails" asp-route-id="@article.Id">
                         <img src="@article.Image" class="card-img-top img-fluid" alt="">
                     </a>
                     <div class="card-body">
                         <ul class="blog-icons my-4">
                             <li>
-                                <a href="#">
                                     <i class="far fa-calendar-alt"></i> @(((DateTime)(article.UpdatedDate)).ToString("dd-MMM-yyyy"))
-                                </a>
                             </li>
                             <li class="mx-2">
                                 <a href="#">
@@ -30,7 +28,7 @@
 
                         </ul>
                         <h5 class="card-title">
-                            <a href="single.html">@article.Title</a>
+                            <a asp-controller="Article" asp-action="ArticleDetails" asp-route-id="@article.Id">@article.Title</a>
                         </h5>
                         <p class="card-text mb-3">@StringFormatter.GetLastWordOfString(article.Content, 130)</p>
                         <a asp-controller="Article" asp-action="ArticleDetails" asp-route-id="@article.Id" class="btn btn-primary read-m">Read More</a>
@@ -38,25 +36,26 @@
                 </div>
             }
             
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-left mt-4">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">Previous</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
         </div>
     </div>
 </div>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-left mt-4">
+        <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">Previous</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="#">3</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+        </li>
+    </ul>
+</nav>

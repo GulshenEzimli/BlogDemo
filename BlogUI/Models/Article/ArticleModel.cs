@@ -14,5 +14,6 @@ namespace BlogUI.Models.Article
 		public bool IsDeleted { get; set; }
 		public int CategoryId { get; set; }
 		public string CategoryName { get; set; }
-	}
+        public int WriterId { get; set; }
+    }
 }
