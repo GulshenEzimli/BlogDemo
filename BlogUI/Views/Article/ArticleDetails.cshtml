@@ -50,7 +50,7 @@
             <aside class="col-lg-4 agileits-w3ls-right-blog-con text-right">
                 <div class="right-blog-info text-left">
 
-                    @await Html.PartialAsync("~/Views/Shared/SubscribePartial.cshtml", new NewsLetterModel())
+                    @await Html.PartialAsync("~/Views/Shared/SubscribePartial.cshtml", (new NewsLetterModel(), Model.Id))
 
                     @await Component.InvokeAsync("CategoryList")
 
