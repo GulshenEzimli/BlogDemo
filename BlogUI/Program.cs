@@ -33,6 +33,8 @@ namespace BlogUI
 				app.UseHsts();
 			}
 
+			app.UseStatusCodePagesWithReExecute("/Error/Index", "?code={0}");
+
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 
