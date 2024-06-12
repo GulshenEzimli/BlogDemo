@@ -19,6 +19,7 @@ namespace BlogUI.Extensions
 			services.AddTransient<ICategoryRepository, CategoryRepository>();
 			services.AddTransient<ICommentRepository, CommentRepository>();
 			services.AddTransient<INewsLetterRepository, NewsLetterRepository>();
+            services.AddTransient<IAboutRepository, AboutRepository>(); 
 		}
 	}
 }

@@ -29,7 +29,7 @@ namespace BlogUI
 
 			if (!app.Environment.IsDevelopment())
 			{
-				app.UseExceptionHandler("/Home/Error");
+				app.UseExceptionHandler("/Error/Index?code=404");
 				app.UseHsts();
 			}
 

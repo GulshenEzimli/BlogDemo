@@ -11,7 +11,7 @@ namespace BlogUI.Extensions
 			services.AddTransient<ICategoryService, CategoryManager>();
 			services.AddTransient<ICommentService, CommentManager>();
 			services.AddTransient<INewsLetterService, NewsLetterManager>();
-
+            services.AddTransient<IAboutService, AboutManager>();
 		}
 	}
 }

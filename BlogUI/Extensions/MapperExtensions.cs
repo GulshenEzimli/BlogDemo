@@ -11,6 +11,7 @@ namespace BlogUI.Extensions
 			services.AddTransient<ICategoryMapper, CategoryMapper>();
 			services.AddTransient<IArticleCommentMapper, ArticleCommentMapper>();
 			services.AddTransient<INewsLetterMapper, NewsLetterMapper>();
+            services.AddTransient<IAboutMapper, AboutMapper>();
 		}
 	}
 }
