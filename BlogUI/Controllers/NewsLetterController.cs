@@ -15,14 +15,14 @@ namespace BlogUI.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult SubscribeMail(NewsLetterModel model, int id)
-		{
-			//var newsLetterModel = new NewsLetterModel();
-			//newsLetterModel.Mail = mail;
-			//newsLetterModel.IsDeleted = false;
-			//_service.Add(newsLetterModel);
+		public IActionResult SubscribeMail(NewsLetterModel model,string returnUrl)
+        {
+            var newsLetterModel = new NewsLetterModel();
+            newsLetterModel.Mail = model.Mail;
+            newsLetterModel.IsDeleted = false;
+            _service.Add(newsLetterModel);
 
-			return RedirectToAction();
+            return Redirect(returnUrl);
 		}
 	}
 }

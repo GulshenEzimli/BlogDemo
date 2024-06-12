@@ -50,7 +50,10 @@
             <aside class="col-lg-4 agileits-w3ls-right-blog-con text-right">
                 <div class="right-blog-info text-left">
 
-                    @await Html.PartialAsync("~/Views/Shared/SubscribePartial.cshtml", (new NewsLetterModel(), Model.Id))
+                    @{
+                        ViewBag.returnUrl = Url.ActionLink("ArticleDetails", "Article", new { id = Model.Id });
+                    }
+                    @await Html.PartialAsync("~/Views/Shared/SubscribePartial.cshtml", new NewsLetterModel())
 
                     @await Component.InvokeAsync("CategoryList")
 
