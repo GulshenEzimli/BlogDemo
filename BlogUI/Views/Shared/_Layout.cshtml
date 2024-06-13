@@ -8,18 +8,19 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 
     <script>
-		addEventListener("load", function () {
-			setTimeout(hideURLbar, 0);
-		}, false);
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
 
-		function hideURLbar() {
-			window.scrollTo(0, 1);
-		}
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
     </script>
     <link href="~/web/css/bootstrap.css" rel='stylesheet' type='text/css' />
-    <link href="~/web/css/single.css" rel="stylesheet" >
+    <link href="~/web/css/single.css" rel="stylesheet">
     <link href="~/web/css/style.css" rel='stylesheet' type='text/css' />
     <link href="~/web/css/fontawesome-all.css" rel="stylesheet">
+    <link href="~/web/css/contact.css" rel="stylesheet" />
     <link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
           rel="stylesheet">
 </head>
@@ -88,7 +89,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Index">
+                            <a class="nav-link" asp-controller="Article" asp-action="Index">
                                 Home
                                 <span class="sr-only">(current)</span>
                             </a>
@@ -124,13 +125,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
         </div>
     </header>
-    
+
     <section class="main-content-w3layouts-agileits">
         <div class="container">
             <main role="main" class="pb-3">
                 @RenderBody()
             </main>
-           
+
         </div>
     </section>
 
@@ -143,7 +144,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <h3>About US</h3>
                     <p>Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. lacinia eget consectetur sed, convallis at tellus..</p>
                     <div class="read">
-                        <a href="single.html" class="btn btn-primary read-m">Read More</a>
+                        <a asp-controller="Home" asp-action="About" class="btn btn-primary read-m">Read More</a>
                     </div>
                 </div>
                 <div class="col-lg-4 footer-grid-agileits-w3ls text-left">
@@ -209,23 +210,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                     </div>
                 </div>
-                <!-- subscribe -->
+
                 <div class="col-lg-4 subscribe-main footer-grid-agileits-w3ls text-left">
                     <h2>Signup to our newsletter</h2>
                     <div class="subscribe-main text-left">
                         <div class="subscribe-form">
-                            <form action="#" method="post" class="subscribe_form">
-                                <input class="form-control" type="email" placeholder="Enter your email..." required="">
-                                <button type="submit" class="btn btn-primary submit">Submit</button>
+                            <form method="post" asp-controller="NewsLetter" asp-action="SubscribeMail" class="subscribe_form" asp-route-returnUrl="@string.Format("{0}://{1}{2}{3}", Context.Request.Scheme, Context.Request.Host, Context.Request.Path, Context.Request.QueryString)">
+                                <input class="form-control" type="email" name="Mail" placeholder="Enter your email..." required="">
+                                <button type="submit" class="btn btn-primary submit read-m">Submit</button>
                             </form>
                             <div class="clearfix"> </div>
                         </div>
                         <p>We respect your privacy.No spam ever!</p>
                     </div>
-                    <!-- //subscribe -->
                 </div>
+
             </div>
-            <!-- footer -->
+
             <div class="footer-cpy text-center">
                 <div class="footer-social">
                     <div class="copyrighttop">
@@ -274,32 +275,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="~/web/js/move-top.js"></script>
     <script src="~/web/js/easing.js"></script>
     <script>
-		jQuery(document).ready(function ($) {
-			$(".scroll").click(function (event) {
-				event.preventDefault();
-				$('html,body').animate({
-					scrollTop: $(this.hash).offset().top
-				}, 900);
-			});
-		});
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 900);
+            });
+        });
     </script>
 
     <script>
-		$(document).ready(function () {
-			/*
-									var defaults = {
-							  			containerID: 'toTop', // fading element id
-										containerHoverID: 'toTopHover', // fading element hover id
-										scrollSpeed: 1200,
-										easingType: 'linear'
-							 		};
-									*/
+        $(document).ready(function () {
+            /*
+                                    var defaults = {
+                                            containerID: 'toTop', // fading element id
+                                        containerHoverID: 'toTopHover', // fading element hover id
+                                        scrollSpeed: 1200,
+                                        easingType: 'linear'
+                                        };
+                                    */
 
-			$().UItoTop({
-				easingType: 'easeOutQuart'
-			});
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
 
-		});
+        });
     </script>
     <a href="#home" class="scroll" id="toTop" style="display: block;">
         <span id="toTopHover" style="opacity: 1;"> </span>

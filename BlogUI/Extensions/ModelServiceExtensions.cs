@@ -11,6 +11,7 @@ namespace BlogUI.Extensions
 			services.AddTransient<ICategoryModelService, CategoryModelService>();
 			services.AddTransient<INewsLetterModelService, NewsLetterModelService>();
             services.AddTransient<IAboutModelService, AboutModelService>(); 
+            services.AddTransient<IContactModelService, ContactModelService>(); 
 		}
 	}
 }
