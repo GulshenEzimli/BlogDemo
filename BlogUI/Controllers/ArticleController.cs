@@ -1,4 +1,5 @@
 ﻿using BlogUI.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlogUI.Controllers
@@ -12,6 +13,7 @@ namespace BlogUI.Controllers
 			_articleService = articleService;
 		}
 
+		[AllowAnonymous]
 		public IActionResult Index()
 		{
 			var articleModels = _articleService.GetAllArticles();
