@@ -8,6 +8,9 @@ using Business.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
 using DataAccess.DbContexts;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlogUI
@@ -18,7 +21,19 @@ namespace BlogUI
 		{
 			var builder = WebApplication.CreateBuilder(args);
 
-			builder.Services.AddControllersWithViews();
+			//builder.Services.AddSession();
+			builder.Services.AddControllersWithViews(config =>
+            {
+                //var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+                //config.Filters.Add(new AuthorizeFilter(policy));
+            });
+
+			//builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie( o =>
+			//{
+			//	o.LoginPath = "/Account/SignIn";
+			//});
+			//builder.Services.AddAuthorization();
+
 
 			builder.Services.AddEfDb(builder.Configuration);
 			builder.Services.AddBusinessServices();
@@ -35,13 +50,14 @@ namespace BlogUI
 
 			app.UseStatusCodePagesWithReExecute("/Error/Index", "?code={0}");
 
-			app.UseHttpsRedirection();
+            //app.UseAuthentication();
+            //app.UseAuthorization();
+            //app.UseSession();
+
+            app.UseHttpsRedirection();
 			app.UseStaticFiles();
 
 			app.UseRouting();
-
-			app.UseAuthorization();
-
 			app.MapControllerRoute(
 				name: "default",
 				pattern: "{controller=Article}/{action=Index}/{id?}");

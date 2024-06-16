@@ -1,0 +1,30 @@
+﻿@model List<ArticleModel> 
+<div class="col-lg-4 footer-grid-agileits-w3ls text-left">
+
+    <div class="tech-btm">
+        <h3>Latest Posts</h3>
+        @foreach(var article in Model)
+         {
+            <div class="blog-grids row mb-3">
+                <div class="col-md-5 blog-grid-left">
+                    <a asp-controller="Article" asp-action="ArticleDetails" asp-route-id="@article.Id">
+                        <img src="@article.Image" class="card-img-top img-fluid" alt="">
+                    </a>
+                </div>
+                <div class="col-md-7 blog-grid-right">
+                    <h5>
+                        <a asp-controller="Article" asp-action="ArticleDetails" asp-route-id="@article.Id">
+                            @StringFormatter.GetLastWordOfString(article.Content, 50)
+                        </a>
+                    </h5>
+                    <div class="sub-meta">
+                        <span>
+                            <i class="far fa-clock"></i>@(((DateTime)article.UpdatedDate).ToString("d"))
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</div>

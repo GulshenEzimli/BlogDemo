@@ -30,19 +30,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="top-bar_sub_w3layouts container-fluid">
             <div class="row">
                 <div class="col-md-4 logo text-left">
-                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <a class="navbar-brand" asp-controller="Article" asp-action="Index">
                         <i class="fab fa-linode"></i> Weblog
                     </a>
                 </div>
                 <div class="col-md-4 top-forms text-center mt-lg-3 mt-md-1 mt-0">
                     <span>Welcome Back!</span>
                     <span class="mx-lg-4 mx-md-2  mx-1">
-                        <a href="~/web/login.html">
+                        <a asp-controller="Account" asp-action="SignIn">
                             <i class="fas fa-lock"></i> Sign In
                         </a>
                     </span>
                     <span>
-                        <a href="~/web/register.html">
+                        <a asp-controller="Account" asp-action="SignUp">
                             <i class="far fa-user"></i> Register
                         </a>
                     </span>
@@ -147,75 +147,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <a asp-controller="Home" asp-action="About" class="btn btn-primary read-m">Read More</a>
                     </div>
                 </div>
-                <div class="col-lg-4 footer-grid-agileits-w3ls text-left">
-
-                    <div class="tech-btm">
-                        <h3>Latest Posts</h3>
-                        <div class="blog-grids row mb-3">
-                            <div class="col-md-5 blog-grid-left">
-                                <a href="single.html">
-                                    <img src="~/web/images/4.jpg" class="card-img-top img-fluid" alt="">
-                                </a>
-                            </div>
-                            <div class="col-md-7 blog-grid-right">
-
-                                <h5>
-                                    <a href="single.html">Pellentesque dui, non felis. Maecenas male non felis </a>
-                                </h5>
-                                <div class="sub-meta">
-                                    <span>
-                                        <i class="far fa-clock"></i> 20 Jan, 2018
-                                    </span>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="blog-grids row mb-3">
-                            <div class="col-md-5 blog-grid-left">
-                                <a href="single.html">
-                                    <img src="~/web/images/5.jpg" class="card-img-top img-fluid" alt="">
-                                </a>
-                            </div>
-                            <div class="col-md-7 blog-grid-right">
-
-                                <h5>
-                                    <a href="single.html">Pellentesque dui, non felis. Maecenas male non felis </a>
-                                </h5>
-                                <div class="sub-meta">
-                                    <span>
-                                        <i class="far fa-clock"></i> 20 Jan, 2018
-                                    </span>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="blog-grids row mb-3">
-                            <div class="col-md-5 blog-grid-left">
-                                <a href="single.html">
-                                    <img src="~/web/images/6.jpg" class="card-img-top img-fluid" alt="">
-                                </a>
-                            </div>
-                            <div class="col-md-7 blog-grid-right">
-
-                                <h5>
-                                    <a href="single.html">Pellentesque dui, non felis. Maecenas male non felis </a>
-                                </h5>
-                                <div class="sub-meta">
-                                    <span>
-                                        <i class="far fa-clock"></i> 20 Jan, 2018
-                                    </span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
+               
+                @await Component.InvokeAsync("LastThreeArticle")
 
                 <div class="col-lg-4 subscribe-main footer-grid-agileits-w3ls text-left">
                     <h2>Signup to our newsletter</h2>
                     <div class="subscribe-main text-left">
                         <div class="subscribe-form">
-                            <form method="post" asp-controller="NewsLetter" asp-action="SubscribeMail" class="subscribe_form" asp-route-returnUrl="@string.Format("{0}://{1}{2}{3}", Context.Request.Scheme, Context.Request.Host, Context.Request.Path, Context.Request.QueryString)">
+                            <form method="post" asp-controller="NewsLetter" asp-action="SubscribeMail" class="subscribe_form" asp-route-returnUrl="@($"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}")">
                                 <input class="form-control" type="email" name="Mail" placeholder="Enter your email..." required="">
                                 <button type="submit" class="btn btn-primary submit read-m">Submit</button>
                             </form>

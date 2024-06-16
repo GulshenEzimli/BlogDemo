@@ -39,6 +39,7 @@ namespace BlogUI.Mappers.Implementations
 			articleComment.UserId = entity.UserId;
 			articleComment.UserName = entity.User.FirstName;
 			articleComment.UserSurName = entity.User.LastName;
+			articleComment.UserImage = entity.User.Image;
 
 			return articleComment;
 		}

@@ -5,7 +5,7 @@
     @foreach (var comment in Model)
 	{
          <div class="media">
-             <img src="images/t1.jpg" alt="" class="img-fluid" />
+             <img src="@comment.UserImage" alt="" class="img-fluid" />
              <div class="media-body">
                  <h5 class="mt-0">@comment.UserFullName</h5>
                  <p>@comment.Content</p>
