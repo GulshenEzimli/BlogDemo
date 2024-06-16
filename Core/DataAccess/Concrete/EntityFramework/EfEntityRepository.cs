@@ -37,7 +37,7 @@ namespace Core.DataAccess.Concrete.EntityFramework
 									_dbContext.Set<TEntity>().Where(filter).ToList();
 		}
 
-		public TEntity GetById(Expression<Func<TEntity, bool>> filter)
+		public TEntity Get(Expression<Func<TEntity, bool>> filter)
 		{
 			return _dbContext.Set<TEntity>().OrderBy(entity => entity).LastOrDefault(filter);
 		}

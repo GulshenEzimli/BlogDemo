@@ -11,5 +11,7 @@ namespace DataAccess.Abstract
 	public interface IArticleRepository :IEntityRepository<Article>
 	{
 		List<Article> GetArticlesWithCategory();
+		List<Article> GetLastThree();
+		List<Article> LastArticlesOfWriter(int id);
 	}
 }

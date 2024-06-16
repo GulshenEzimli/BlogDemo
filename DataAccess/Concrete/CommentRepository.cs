@@ -21,9 +21,9 @@ namespace DataAccess.Concrete
 			_dbContext = dbContext;
 		}
 
-		public List<Comment> ArticleCommentsWithUser(Expression<Func<Comment, bool>> filter)
+		public List<Comment> ArticleCommentsWithUser(int id)
 		{
-			return _dbContext.Set<Comment>().Include(comment => comment.User).Where(filter).ToList();
+			return _dbContext.Set<Comment>().Include(comment => comment.User).Where(c => c.ArticleId == id).ToList();
 
 		}
 	}

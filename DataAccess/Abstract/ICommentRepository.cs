@@ -11,6 +11,6 @@ namespace DataAccess.Abstract
 {
 	public interface ICommentRepository : IEntityRepository<Comment>
 	{
-		List<Comment> ArticleCommentsWithUser(Expression<Func<Comment,bool>> filter);
+		List<Comment> ArticleCommentsWithUser(int id);
 	}
 }

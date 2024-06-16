@@ -24,5 +24,16 @@ namespace DataAccess.Concrete
 		{
 			return _dbContext.Set<Article>().Include(x => x.Category).ToList();
 		}
-	}
+
+        public List<Article> GetLastThree()
+        {
+            return _dbContext.Set<Article>().OrderByDescending(x => x.UpdatedDate).Take(3).ToList();
+        }
+
+        public List<Article> LastArticlesOfWriter(int id)
+        {
+            return _dbContext.Set<Article>().Where(a => a.WriterId == id).OrderByDescending(x => x.UpdatedDate).Take(3).ToList();
+
+        }
+    }
 }

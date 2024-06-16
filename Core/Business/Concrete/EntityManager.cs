@@ -34,7 +34,7 @@ namespace Core.Business.Concrete
 
 		public TEntity GetById(Expression<Func<TEntity, bool>> filter)
 		{
-			return _repository.GetById(filter);
+			return _repository.Get(filter);
 		}
 	}
 }
