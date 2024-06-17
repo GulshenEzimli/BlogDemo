@@ -9,6 +9,6 @@ namespace Core.Business.Abstract
 		void Delete(int id);
 		void Update(T entity);
 		List<T> GetAll();
-		T GetById(Expression<Func<T, bool>> filter);
+		T Get(Expression<Func<T, bool>> filter);
 	}
 }

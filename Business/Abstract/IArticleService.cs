@@ -5,7 +5,9 @@ namespace Business.Abstract
 {
 	public interface IArticleService : IEntityService<Article>
 	{
-		List<Article> GetListWithCategories();
-		List<Article> GetArticlesWithWriterId(int id);
+		Article GetArticleWithIncludes(int id);
+		List<Article> GetAllArticlesWithIncludes();
+		List<Article> GetLastThree();
+		List<Article> LastArticlesOfWriter(int id);
 	}
 }

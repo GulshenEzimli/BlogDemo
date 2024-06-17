@@ -14,14 +14,24 @@ namespace Business.Concrete
 			_articleRepository = articleRepository;
         }
 
-		public List<Article> GetListWithCategories()
+		public List<Article> GetAllArticlesWithIncludes()
 		{
-			return _articleRepository.GetArticlesWithCategory();
+			return _articleRepository.GetAllArticlesWithIncludes();
 		}
 
-		public List<Article> GetArticlesWithWriterId(int id)
-		{
-			return this.GetListWithCategories().Where(a => a.WriterId == id).ToList();
-		}
-	}
+        public Article GetArticleWithIncludes(int id)
+        {
+            return _articleRepository.GetArticleWithIncludes(id);
+        }
+
+        public List<Article> GetLastThree()
+        {
+            return _articleRepository.GetLastThree();
+        }
+
+        public List<Article> LastArticlesOfWriter(int id)
+        {
+            return _articleRepository.LastArticlesOfWriter(id);
+        }
+    }
 }

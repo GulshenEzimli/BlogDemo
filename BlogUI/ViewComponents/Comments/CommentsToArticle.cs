@@ -19,7 +19,7 @@ namespace BlogUI.ViewComponents.Comments
 
 		public IViewComponentResult Invoke(int id)
         {
-			var comments = _commentService.ArticleCommentsWithUser(c => c.ArticleId == id);
+			var comments = _commentService.ArticleCommentsWithUser(id);
 			var articleComments = new List<ArticleComment>();
 
 			foreach (var comment in comments)

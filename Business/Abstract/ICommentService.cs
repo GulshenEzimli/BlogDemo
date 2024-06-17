@@ -6,6 +6,6 @@ namespace Business.Abstract
 {
 	public interface ICommentService: IEntityService<Comment>
 	{
-		List<Comment> ArticleCommentsWithUser(Expression<Func<Comment,bool>> filters);
+		List<Comment> ArticleCommentsWithUser(int id);
 	}
 }

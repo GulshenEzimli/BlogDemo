@@ -20,20 +20,25 @@ namespace DataAccess.Concrete
 			_dbContext = dbContext;
 		}
 
-		public List<Article> GetArticlesWithCategory()
+		public List<Article> GetAllArticlesWithIncludes()
 		{
-			return _dbContext.Set<Article>().Include(x => x.Category).ToList();
+			return _dbContext.Set<Article>().Include(a => a.Writer).Include(x => x.Category).ToList();
 		}
 
         public List<Article> GetLastThree()
         {
-            return _dbContext.Set<Article>().OrderByDescending(x => x.UpdatedDate).Take(3).ToList();
+            return _dbContext.Set<Article>().Include(a => a.Category).Include(a => a.Writer).OrderByDescending(x => x.UpdatedDate).Take(3).ToList();
         }
 
         public List<Article> LastArticlesOfWriter(int id)
         {
-            return _dbContext.Set<Article>().Where(a => a.WriterId == id).OrderByDescending(x => x.UpdatedDate).Take(3).ToList();
+            return _dbContext.Set<Article>().Include(a => a.Writer).Include(a => a.Category).Where(a => a.WriterId == id).OrderByDescending(x => x.UpdatedDate).Take(3).ToList();
 
+        }
+
+        public Article GetArticleWithIncludes(int id)
+        {
+            return _dbContext.Set<Article>().Include(a => a.Writer).Include(a => a.Category).FirstOrDefault(a => a.Id == id);
         }
     }
 }

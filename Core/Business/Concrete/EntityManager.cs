@@ -32,7 +32,7 @@ namespace Core.Business.Concrete
 			return _repository.GetAll();
 		}
 
-		public TEntity GetById(Expression<Func<TEntity, bool>> filter)
+		public TEntity Get(Expression<Func<TEntity, bool>> filter)
 		{
 			return _repository.Get(filter);
 		}

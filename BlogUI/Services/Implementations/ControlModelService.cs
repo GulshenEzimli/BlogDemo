@@ -18,9 +18,9 @@ namespace BlogUI.Services.Implementations
             _entityBusinessService = entityBusinessService;
         }
 
-        public TModel GetById(Expression<Func<TEntity, bool>> filter)
+        public TModel Get(Expression<Func<TEntity, bool>> filter)
         {
-            var entity = _entityBusinessService.GetById(filter);
+            var entity = _entityBusinessService.Get(filter);
             var model = _mapper.Map(entity);
 
             return model;

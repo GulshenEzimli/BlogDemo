@@ -14,9 +14,9 @@ namespace Business.Concrete
 			_commentRepository = commentRepository;
         }
 
-		public List<Comment> ArticleCommentsWithUser(Expression<Func<Comment, bool>> filters)
+		public List<Comment> ArticleCommentsWithUser(int id)
 		{
-			return _commentRepository.ArticleCommentsWithUser(filters);
+			return _commentRepository.ArticleCommentsWithUser(id);
 		}
 	}
 }

@@ -18,9 +18,9 @@ namespace BlogUI.Services.Implementations
 		}
 
 		
-		public List<ArticleModel> GetAllArticles()
+		public List<ArticleModel> GetAllArticlesWithIncludes()
 		{
-			var articles = _articleService.GetListWithCategories();
+			var articles = _articleService.GetAllArticlesWithIncludes();
 			List<ArticleModel> models = new List<ArticleModel>();
 			foreach (var article in articles)
 			{
@@ -30,5 +30,38 @@ namespace BlogUI.Services.Implementations
 
 			return models;
 		}
-	}
+
+        public ArticleModel GetArticleWithIncludes(int id)
+        {
+			var article = _articleService.GetArticleWithIncludes(id);
+			var articleModel = _articleMapper.Map(article);
+
+			return articleModel;
+
+        }
+
+        public List<ArticleModel> LastArticlesOfWriter(int id)
+        {
+           var articles = _articleService.LastArticlesOfWriter(id);
+			List<ArticleModel> models = new List<ArticleModel>();
+			foreach (var article in articles)
+			{
+				var model = _articleMapper.Map(article);
+				models.Add(model);
+			}
+			return models;
+        }
+
+        public List<ArticleModel> GetLastThree()
+        {
+			var articles = _articleService.GetLastThree();
+            List<ArticleModel> models = new List<ArticleModel>();
+            foreach (var article in articles)
+            {
+                var model = _articleMapper.Map(article);
+                models.Add(model);
+            }
+            return models;
+        }
+    }
 }

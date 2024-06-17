@@ -16,14 +16,14 @@ namespace BlogUI.Controllers
 		[AllowAnonymous]
 		public IActionResult Index()
 		{
-			var articleModels = _articleService.GetAllArticles();
+			var articleModels = _articleService.GetAllArticlesWithIncludes();
 			
 			return View(articleModels);
 		}
 
 		public IActionResult ArticleDetails(int id)
 		{
-			var articleModel = _articleService.GetAllArticles().FirstOrDefault(x => x.Id == id);
+			var articleModel = _articleService.GetArticleWithIncludes(id);
 			return View(articleModel);
 		}
 	}

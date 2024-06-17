@@ -15,10 +15,8 @@ namespace BlogUI.ViewComponents.Article
 
 		public IViewComponentResult Invoke(int id)
 		{
-			var articles = _articleService.GetAllArticles().Where(a => a.WriterId == id).OrderBy(a => a.UpdatedDate).ToList();
+			var articles = _articleService.LastArticlesOfWriter(id);
 			
-			if (articles.Count > 3)
-				articles = articles.TakeLast(3).ToList();
 			return View(articles);
 		}
 	}
