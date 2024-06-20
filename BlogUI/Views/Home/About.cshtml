@@ -27,7 +27,7 @@
                     @{
                         ViewBag.returnUrl = Url.ActionLink("About","Home");
                     }
-                    @await Html.PartialAsync("~/Views/Shared/SubscribePartial.cshtml", new NewsLetterModel())
+                    @await Html.PartialAsync("~/Views/Shared/Partials/SubscribePartial.cshtml", new NewsLetterModel())
 
                     <div class="tech-btm widget_social">
                         <h4>Stay Connect</h4>
