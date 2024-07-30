@@ -10,14 +10,17 @@ namespace DataAccess.DbContexts
 {
 	public class BlogDbContext : DbContext
 	{
-		private readonly string _connectionString;
+        public BlogDbContext()
+        {
+                
+        }
 
-		public BlogDbContext(string connectionString)
-		{
-			_connectionString = connectionString;
-		}
+        public BlogDbContext(DbContextOptions<BlogDbContext> options) :base(options) 
+        {
+            
+        }
 
-		public DbSet<About> Abouts { get; set; }
+        public DbSet<About> Abouts { get; set; }
         public DbSet<Article> Articles { get; set; }
 		public DbSet<Category> Categories { get; set; }
 		public DbSet<Comment> Comments { get; set; }
@@ -25,11 +28,6 @@ namespace DataAccess.DbContexts
 		public DbSet<Writer> Writers { get; set; }
 		public DbSet<User> Users { get; set; }
         public DbSet<NewsLetter> NewsLetters { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-		{
-			optionsBuilder.UseSqlServer(_connectionString);
-        }
 
 	}
 }

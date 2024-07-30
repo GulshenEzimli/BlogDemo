@@ -17,9 +17,9 @@ namespace Core.Business.Concrete
 			_repository.Add(entity);
 		}
 
-		public void Delete(int id)
+		public void Delete(TEntity entity)
 		{
-			_repository.Delete(id);
+			_repository.Delete(entity);
 		}
 
 		public void Update(TEntity entity)

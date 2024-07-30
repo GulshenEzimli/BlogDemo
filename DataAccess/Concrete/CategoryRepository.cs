@@ -11,13 +11,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete
 {
-	public class CategoryRepository : EfEntityRepository<Category>, ICategoryRepository
+	public class CategoryRepository : EfEntityRepository<Category, BlogDbContext>, ICategoryRepository
 	{
-		private readonly DbContext _dbContext;
-
-		public CategoryRepository(DbContext dbContext) : base(dbContext)
-		{
-			_dbContext = dbContext;
-		}
+        
 	}
 }

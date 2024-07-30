@@ -11,13 +11,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete
 {
-	public class WriterRepository : EfEntityRepository<Writer>, IWriterRepository
+	public class WriterRepository : EfEntityRepository<Writer, BlogDbContext>, IWriterRepository
 	{
-		private readonly DbContext _dbContext;
-
-		public WriterRepository(DbContext dbContext) : base(dbContext)
-		{
-			_dbContext = dbContext;
-		}
+		
 	}
 }

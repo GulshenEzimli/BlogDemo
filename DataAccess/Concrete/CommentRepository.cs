@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete
 {
-	public class CommentRepository : EfEntityRepository<Comment>,ICommentRepository
+	public class CommentRepository : EfEntityRepository<Comment, BlogDbContext>,ICommentRepository
 	{
-		private readonly DbContext _dbContext;
+		private readonly BlogDbContext _dbContext;
 
-		public CommentRepository(DbContext dbContext) :	base(dbContext)
+		public CommentRepository(BlogDbContext dbContext)
 		{
 			_dbContext = dbContext;
 		}

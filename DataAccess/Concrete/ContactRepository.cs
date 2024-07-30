@@ -11,13 +11,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete
 {
-	public class ContactRepository : EfEntityRepository<Contact>, IContactRepository
+	public class ContactRepository : EfEntityRepository<Contact, BlogDbContext>, IContactRepository
 	{
-		private readonly DbContext _dbContext;
 
-		public ContactRepository(DbContext dbContext) : base(dbContext)
-		{
-			_dbContext = dbContext;
-		}
 	}
 }

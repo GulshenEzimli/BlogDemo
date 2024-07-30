@@ -46,7 +46,7 @@ namespace BlogUI.Services.Implementations
 
         public void Delete(int id)
         {
-            _entityBusinessService.Delete(id);
+            _entityBusinessService.Delete(new TEntity() { Id = id});
         }
 
         public void Update(TModel model)

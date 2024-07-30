@@ -10,43 +10,55 @@ using System.Threading.Tasks;
 
 namespace Core.DataAccess.Concrete.EntityFramework
 {
-	public class EfEntityRepository<TEntity> : IEntityRepository<TEntity> where TEntity : class, IEntity, new()
+	public class EfEntityRepository<TEntity,TContext> : IEntityRepository<TEntity>  
+                                            where TEntity : class, IEntity, new()
+                                            where TContext : DbContext, new()
 	{
-		private readonly DbContext _dbContext;
-		public EfEntityRepository(DbContext dbContext)
-		{
-			_dbContext = dbContext;
-		}
 		public void Add(TEntity entity)
 		{
-			var addedEntity = _dbContext.Entry(entity);
-			addedEntity.State = EntityState.Added;
-			_dbContext.SaveChanges();
+            using (TContext context = new TContext())
+            {
+                var addedEntity = context.Entry(entity);
+                addedEntity.State = EntityState.Added;
+                context.SaveChanges();
+            }
 		}
 
-		public void Delete(int id)
+		public void Delete(TEntity entity)
 		{
-			var deletedEntity = _dbContext.Entry(id);
-			deletedEntity.State = EntityState.Deleted;
-			_dbContext.SaveChanges();
+            using (TContext context = new TContext())
+            {
+                var deletedEntity = context.Entry(entity);
+                deletedEntity.State = EntityState.Deleted;
+                context.SaveChanges();
+            }
 		}
 
 		public List<TEntity> GetAll(Expression<Func<TEntity, bool>>? filter = null)
 		{
-			return filter == null ? _dbContext.Set<TEntity>().ToList() :
-									_dbContext.Set<TEntity>().Where(filter).ToList();
+            using (TContext context = new TContext())
+            {
+                return filter == null ? context.Set<TEntity>().ToList() :
+                                   context.Set<TEntity>().Where(filter).ToList();
+            }
 		}
 
 		public TEntity Get(Expression<Func<TEntity, bool>> filter)
 		{
-			return _dbContext.Set<TEntity>().OrderBy(entity => entity).LastOrDefault(filter);
-		}
+            using (TContext context = new TContext())
+            {
+                return context.Set<TEntity>().OrderBy(entity => entity).LastOrDefault(filter);
+            }
+        }
 
 		public void Update(TEntity entity)
 		{
-			var updatedEntity = _dbContext.Entry(entity);
-			updatedEntity.State = EntityState.Modified;
-			_dbContext.SaveChanges();
+            using (TContext context = new TContext())
+            {
+                var updatedEntity = context.Entry(entity);
+                updatedEntity.State = EntityState.Modified;
+                context.SaveChanges();
+            }
 		}
 	}
 }

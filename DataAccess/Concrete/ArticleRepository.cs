@@ -6,16 +6,16 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace DataAccess.Concrete
 {
-	public class ArticleRepository : EfEntityRepository<Article>, IArticleRepository
+	public class ArticleRepository : EfEntityRepository<Article, BlogDbContext>, IArticleRepository
 	{
-		private readonly DbContext _dbContext;
+		private readonly BlogDbContext _dbContext;
 
-		public ArticleRepository(DbContext dbContext) : base(dbContext)
+		public ArticleRepository(BlogDbContext dbContext) 
 		{
 			_dbContext = dbContext;
 		}
