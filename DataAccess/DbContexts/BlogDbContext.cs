@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,16 +11,6 @@ namespace DataAccess.DbContexts
 {
 	public class BlogDbContext : DbContext
 	{
-        public BlogDbContext()
-        {
-                
-        }
-
-        public BlogDbContext(DbContextOptions<BlogDbContext> options) :base(options) 
-        {
-            
-        }
-
         public DbSet<About> Abouts { get; set; }
         public DbSet<Article> Articles { get; set; }
 		public DbSet<Category> Categories { get; set; }
@@ -29,5 +20,10 @@ namespace DataAccess.DbContexts
 		public DbSet<User> Users { get; set; }
         public DbSet<NewsLetter> NewsLetters { get; set; }
 
-	}
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+            optionsBuilder.UseSqlServer("Server=GULSHAN;Database=BlogDb;Integrated Security=true;TrustServerCertificate=true");
+        }
+    }
 }

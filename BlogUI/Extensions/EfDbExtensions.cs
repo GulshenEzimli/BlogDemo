@@ -9,13 +9,6 @@ namespace BlogUI.Extensions
 	{
 		public static void AddEfDb(this IServiceCollection services, IConfiguration configuration)
 		{
-			var connectionString = configuration.GetSection("ConnectionStrings").GetSection("Default").Value;
-
-            services.AddDbContext<BlogDbContext>(options =>
-            {
-                options.UseSqlServer(connectionString);
-            });
-
 			services.AddTransient<IArticleRepository, ArticleRepository>();
 			services.AddTransient<ICategoryRepository, CategoryRepository>();
 			services.AddTransient<ICommentRepository, CommentRepository>();
