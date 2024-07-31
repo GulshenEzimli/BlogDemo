@@ -1,17 +1,7 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using BlogUI.Extensions;
-using BlogUI.Mappers.Implementations;
-using BlogUI.Mappers.Interfaces;
-using BlogUI.Services.Implementations;
-using BlogUI.Services.Interfaces;
-using Business.Abstract;
-using Business.Concrete;
-using DataAccess.Abstract;
-using DataAccess.Concrete;
-using DataAccess.DbContexts;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.EntityFrameworkCore;
+using Business.DependencyResolvers.Autofac;
 
 namespace BlogUI
 {
@@ -20,7 +10,10 @@ namespace BlogUI
 		public static void Main(string[] args)
 		{
 			var builder = WebApplication.CreateBuilder(args);
-
+            builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()).ConfigureContainer<ContainerBuilder>(builder =>
+            {
+                builder.RegisterModule(new AutofacBusinessModule());
+            });
 			//builder.Services.AddSession();
 			builder.Services.AddControllersWithViews(config =>
             {
@@ -34,12 +27,10 @@ namespace BlogUI
 			//});
 			//builder.Services.AddAuthorization();
 
-
-			builder.Services.AddEfDb(builder.Configuration);
-			builder.Services.AddBusinessServices();
 			builder.Services.AddMappers();
 			builder.Services.AddModelServices();
 			
+
 			var app = builder.Build();
 
 			if (!app.Environment.IsDevelopment())
