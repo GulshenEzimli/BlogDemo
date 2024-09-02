@@ -1,17 +1,17 @@
 ﻿using Core.Entity.Abstract;
-using Core.Results.Abstract;
-using Core.Results.Concrete;
+using Core.Utilities.Results.Concrete;
+using Core.Utilities.Results.Abstract;
 using FluentValidation;
 
 namespace Core.CrossCuttingConcerns.Validation
 {
     public static class ValidatorTool
     {
-        public static IResult Validate<T>(T entity, IValidator<T> validator) where T : class,IEntity, new()
+        public static IResult Validate(object entity, IValidator validator) 
         {
             var result = new Result(true, "Entity is valid");
 
-            var context = new ValidationContext<T>(entity);
+            var context = new ValidationContext<object>(entity);
             var validationResult = validator.Validate(context);
             
             if(!validationResult.IsValid)
