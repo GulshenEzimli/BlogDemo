@@ -14,5 +14,6 @@ namespace DataAccess.Abstract
 		List<Article> GetAllArticlesWithIncludes();
 		List<Article> GetLastThree();
 		List<Article> LastArticlesOfWriter(int id);
+        Article GetArticleWithUniqueId(Guid guid);
 	}
 }

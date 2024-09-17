@@ -39,5 +39,13 @@ namespace DataAccess.Concrete
                 return context.Set<Article>().Include(a => a.Writer).Include(a => a.Category).FirstOrDefault(a => a.Id == id);
             }
         }
+
+        public Article GetArticleWithUniqueId(Guid guid)
+        {
+            using (BlogDbContext context = new BlogDbContext())
+            {
+                return context.Set<Article>().Include(a => a.Writer).Include(a => a.Category).FirstOrDefault(a => a.UniqueId == guid);
+            }
+        }
     }
 }

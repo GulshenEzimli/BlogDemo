@@ -10,6 +10,7 @@ namespace Entity.Concrete
 	public class Comment : IEntity
 	{
 		public int Id { get; set; }
+        public Guid UniqueId { get; set; } = Guid.NewGuid();
         public int UserId{ get; set; }
         public string Title { get; set; }
 		public string Content { get; set; }

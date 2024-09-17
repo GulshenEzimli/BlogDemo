@@ -10,6 +10,7 @@ namespace Entity.Concrete
 	public class Writer : IEntity
 	{
         public int Id { get; set; }
+        public Guid UniqueId { get; set; } = Guid.NewGuid();
         public string  FirstName { get; set; }
         public string LastName { get; set; }
         public string About { get; set; }
