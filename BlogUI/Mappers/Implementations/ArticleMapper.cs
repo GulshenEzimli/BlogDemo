@@ -10,6 +10,7 @@ namespace BlogUI.Mappers.Implementations
 		{
 			Article article = new Article();
 			article.Id = model.Id;
+            article.UniqueId = model.UniqueId;
 			article.Title = model.Title;
 			article.Content = model.Content;
 			article.ThumbnailImage = model.ThumbnailImage;
@@ -37,6 +38,7 @@ namespace BlogUI.Mappers.Implementations
 			ArticleModel model = new ArticleModel();
 
 			model.Id = entity.Id;
+            model.UniqueId = entity.UniqueId;
 			model.Title = entity.Title;
 			model.Content = entity.Content;
 			model.ThumbnailImage = entity.ThumbnailImage;

@@ -21,9 +21,10 @@ namespace BlogUI.Controllers
 			return View(articleModels);
 		}
 
-		public IActionResult ArticleDetails(int id)
+        [HttpGet]
+		public IActionResult ArticleDetails(Guid uid)
 		{
-			var articleModel = _articleService.GetArticleWithIncludes(id);
+			var articleModel = _articleService.GetArticleWithUniqueId(uid);
 			return View(articleModel);
 		}
 	}

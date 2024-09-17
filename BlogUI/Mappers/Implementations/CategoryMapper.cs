@@ -20,7 +20,7 @@ namespace BlogUI.Mappers.Implementations
 		public CategoryModel Map(Category entity)
 		{
 			CategoryModel model = new CategoryModel();
-
+            model.UniqueId = entity.UniqueId;
 			model.Id = entity.Id;
 			model.Name = entity.Name;
 			model.Description = entity.Description;

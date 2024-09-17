@@ -9,6 +9,6 @@ namespace BlogUI.Services.Interfaces
 		ArticleModel GetArticleWithIncludes(int id);
         List<ArticleModel> LastArticlesOfWriter(int id);
 		List<ArticleModel> GetLastThree();
-
+        ArticleModel GetArticleWithUniqueId(Guid guid);
     }
 }

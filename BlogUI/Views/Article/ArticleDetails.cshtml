@@ -51,7 +51,7 @@
                 <div class="right-blog-info text-left">
 
                     @{
-                        ViewBag.returnUrl = Url.ActionLink("ArticleDetails", "Article", new { id = Model.Id });
+                        ViewBag.returnUrl = Url.ActionLink("ArticleDetails", "Article", new { uid = Model.UniqueId });
                     }
                     @await Html.PartialAsync("~/Views/Shared/Partials/SubscribePartial.cshtml", new NewsLetterModel())
 

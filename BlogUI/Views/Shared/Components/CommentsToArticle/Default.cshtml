@@ -2,27 +2,36 @@
 
 <div class="comment-top">
     <h4>Comments</h4>
-    @foreach (var comment in Model)
-	{
-         <div class="media">
-             <img src="@comment.UserImage" alt="" class="img-fluid" />
-             <div class="media-body">
-                 <h5 class="mt-0">@comment.UserFullName</h5>
-                 <p>@comment.Content</p>
-
-                 @*<div class="media mt-3">
-                <a class="d-flex pr-3" href="#">
-                    <img src="images/t2.jpg" alt="" class="img-fluid" />
-                </a>
+    @if (Model != null && Model.Count == 0)
+    {
+        <div class="alert alert-info" role="alert">
+            Hiç bir yorum yapılmamış. İlk yorum yazan kişi siz olun.
+        </div>
+    }
+    else
+    {
+        @foreach (var comment in Model)
+        {
+            <div class="media">
+                <img src="@comment.UserImage" alt="" class="img-fluid" />
                 <div class="media-body">
-                    <h5 class="mt-0">Richard Spark</h5>
-                    <p>
-                        Lorem Ipsum convallis diam consequat magna vulputate malesuada. id dignissim sapien velit id felis ac cursus eros.
-                        Cras a ornare elit.
-                    </p>
+                    <h5 class="mt-0">@comment.UserFullName</h5>
+                    <p>@comment.Content</p>
+
+                    @*<div class="media mt-3">
+                            <a class="d-flex pr-3" href="#">
+                                <img src="images/t2.jpg" alt="" class="img-fluid" />
+                            </a>
+                            <div class="media-body">
+                                <h5 class="mt-0">Richard Spark</h5>
+                                <p>
+                                    Lorem Ipsum convallis diam consequat magna vulputate malesuada. id dignissim sapien velit id felis ac cursus eros.
+                                    Cras a ornare elit.
+                                </p>
+                            </div>
+                        </div>*@
                 </div>
-            </div>*@
-             </div>
-         </div>
-	}
+            </div>
+        }
+    }
 </div>

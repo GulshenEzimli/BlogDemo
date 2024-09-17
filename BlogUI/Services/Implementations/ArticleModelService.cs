@@ -63,5 +63,13 @@ namespace BlogUI.Services.Implementations
             }
             return models;
         }
+
+        public ArticleModel GetArticleWithUniqueId(Guid guid)
+        {
+            var article = _articleService.GetArticleWithUniqueId(guid);
+            var model = _articleMapper.Map(article);
+
+            return model;
+        }
     }
 }

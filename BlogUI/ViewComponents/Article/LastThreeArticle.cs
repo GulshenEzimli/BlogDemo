@@ -10,11 +10,11 @@ namespace BlogUI.ViewComponents.Article
         {
             _articleService = articleService;
         }
-        public IViewComponentResult Invoke()
+        public  IViewComponentResult Invoke()
         {
             var articles = _articleService.GetLastThree();
 
-            return View(articles);
+            return  View(articles);
         }
     }
 }

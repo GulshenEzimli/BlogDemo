@@ -14,6 +14,7 @@ namespace BlogUI
             {
                 builder.RegisterModule(new AutofacBusinessModule());
             });
+
 			//builder.Services.AddSession();
 			builder.Services.AddControllersWithViews(config =>
             {
@@ -53,7 +54,7 @@ namespace BlogUI
 				name: "default",
 				pattern: "{controller=Article}/{action=Index}/{id?}");
 
-			app.Run();
+            app.Run();
 		}
 	}
 }

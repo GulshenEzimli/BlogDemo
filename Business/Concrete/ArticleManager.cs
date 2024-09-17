@@ -33,5 +33,10 @@ namespace Business.Concrete
         {
             return _articleRepository.LastArticlesOfWriter(id);
         }
+
+        public Article GetArticleWithUniqueId(Guid guid)
+        {
+            return _articleRepository.GetArticleWithUniqueId(guid);
+        }
     }
 }
